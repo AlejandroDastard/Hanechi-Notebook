@@ -1,0 +1,25 @@
+# --- Backend (Spring Boot) ---
+backend/target/
+backend/.idea/
+backend/.vscode/
+backend/mvnw
+backend/mvnw.cmd
+backend/.mvn/
+backend/HELP.md
+
+# --- Frontend (React Native / Expo) ---
+frontend/node_modules/
+frontend/.expo/
+frontend/.idea/
+frontend/.vscode/
+frontend/package-lock.json
+
+# --- General ---
+.DS_Store
+*.log
+dist/
+build/
+
+# Archivos de variables de entorno
+.env
+.env.local
