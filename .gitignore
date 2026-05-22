@@ -23,3 +23,9 @@ build/
 # Archivos de variables de entorno
 .env
 .env.local
+
+# Docker
+backend/docker-data
+
+# Imagenes
+backend/uploads/

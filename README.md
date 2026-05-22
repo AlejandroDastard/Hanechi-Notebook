@@ -28,8 +28,8 @@ Antes de comenzar la instalación, asegúrate de tener instalado en tu entorno:
 
 ### 1. Clonar el repositorio
 ```bash
-    git clone https://github.com/AlejandroDastard/Hanechi-Notebook.git
-    cd Hanechi-Notebook
+git clone https://github.com/AlejandroDastard/Hanechi-Notebook.git
+cd Hanechi-Notebook
 ```
 
 
@@ -44,10 +44,10 @@ Antes de comenzar la instalación, asegúrate de tener instalado en tu entorno:
 4. Ejecuta el proyecto:
 
 ```bash
-    mvn clean install
-    mvn spring-boot:run
+docker compose up -d
+mvn clean install
+mvn spring-boot:run -Dspring-boot.run.arguments="--spring.jpa.hibernate.ddl-auto=create --spring.sql.init.mode=always"
 ```
-
 
 ### 3. Configuración del Frontend
 
@@ -64,8 +64,8 @@ Antes de comenzar la instalación, asegúrate de tener instalado en tu entorno:
 4. Instala las dependencias e inicia Expo:
 
 ```bash
-    npm install
-    npx expo start
+npm install
+npx expo start
 ```
 
 

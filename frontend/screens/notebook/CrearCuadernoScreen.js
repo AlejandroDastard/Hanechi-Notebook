@@ -10,6 +10,8 @@ import ApiService from '../../services/ApiService';
 import SocialDataService from '../../services/SocialDataService';
 import useAuthStore from '../../store/AuthStore';
 import { Colores, Tipografia, Metricas } from '../../theme/AppTheme';
+// Importamos el helper dinámico para subir portadas
+import { subirImagenAlServidor } from '../../utils/ImagenHelper';
 
 // Creación de un nuevo cuaderno
 const CrearCuadernoScreen = ({ navigation }) => {
@@ -52,7 +54,7 @@ const CrearCuadernoScreen = ({ navigation }) => {
         if (!res.canceled) {
             const uri = res.assets[0].uri;
             setPortadaPreview(uri);
-            setUrlPortada(uri.split('/').pop());
+            setUrlPortada(uri);
         }
     };
 
@@ -70,16 +72,24 @@ const CrearCuadernoScreen = ({ navigation }) => {
         if (!titulo.trim()) return;
         setGuardando(true);
         try {
+            let finalPortada = '';
+
+            if (portadaPreview && (portadaPreview.startsWith('file://') || portadaPreview.startsWith('content://'))) {
+                finalPortada = await subirImagenAlServidor(portadaPreview, 'notebook');
+            }
+
             const payload = {
                 titulo,
                 descripcion,
-                urlPortada,
+                urlPortada: finalPortada,
                 visibilidad: esPublico ? 'PUBLICO' : 'PRIVADO',
                 idEtiquetas: etiquetasSeleccionadas
             };
+            
             const res = await ApiService.post(`/cuadernos/usuario/${usuario.id}`, payload);
             navigation.replace('EditarCuaderno', { idCuaderno: res.data.id });
         } catch (e) {
+            console.error("Error al guardar el cuaderno:", e);
         } finally {
             setGuardando(false);
         }

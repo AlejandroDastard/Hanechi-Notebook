@@ -53,9 +53,9 @@ public class EmailService {
                             
                             <tr>
                                 <td style="padding: 40px 35px;">
-                                    <h2 style="margin: 0 0 18px; color: #1C1917; font-size: 22px; font-weight: 600;">Verificación de Seguridad</h2>
+                                    <h2 style="margin: 0 0 18px; color: #1C1917; font-size: 22px; font-weight: 600;">Verifica tu identidad</h2>
                                     <p style="margin: 0 0 28px; color: #78716C; font-size: 16px; line-height: 1.7;">
-                                        Has solicitado un código de acceso para tu cuenta. Por favor, utiliza el siguiente código de un solo uso (OTP) para completar el proceso.
+                                        Para mantener tu cuenta segura, utiliza el siguiente código de seguridad para completar el acceso:
                                     </p>
                                     
                                     <table width="100%%" border="0" cellspacing="0" cellpadding="0">
@@ -70,7 +70,7 @@ public class EmailService {
                                     
                                     <p style="margin: 32px 0 0; color: #78716C; font-size: 14px; text-align: center; line-height: 1.5;">
                                         Este código es válido por <strong>5 minutos</strong>.<br>
-                                        Si no has solicitado este correo, puedes ignorarlo de forma segura.
+                                        Si no has solicitado este correo, puedes ignorarlo.
                                     </p>
                                 </td>
                             </tr>
@@ -78,8 +78,7 @@ public class EmailService {
                             <tr>
                                 <td style="padding: 25px; background-color: #FAF9F6; border-top: 1px solid #D6D3D1; text-align: center;">
                                     <p style="margin: 0; font-size: 12px; color: #78716C; letter-spacing: 1px; line-height: 1.4;">
-                                        &copy; 2026 Hanechi. Tu seguridad es nuestra prioridad.<br>
-                                        Este es un mensaje automático, por favor no respondas.
+                                        &copy; 2026 Hanechi. Seguridad y confianza.
                                     </p>
                                 </td>
                             </tr>

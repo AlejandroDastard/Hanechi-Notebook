@@ -9,6 +9,8 @@ import CabeceraComponent from '../../components/layout/CabeceraComponent';
 import UsuarioDataService from '../../services/UsuarioDataService';
 import useAuthStore from '../../store/AuthStore';
 import { Colores, Metricas, Tipografia } from '../../theme/AppTheme';
+// Importamos el helper dinámico y el método de subida física
+import { obtenerImagenAvatar, obtenerImagenBanner, subirImagenAlServidor } from '../../utils/ImagenHelper';
 
 // Controla la configuracion de datos de perfil
 const EditarPerfilScreen = ({ navigation, route }) => {
@@ -51,8 +53,21 @@ const EditarPerfilScreen = ({ navigation, route }) => {
     const save = async () => {
         setCargando(true);
         try {
-            const finalAvatar = urlAvatar.startsWith('file://') ? urlAvatar : perfilActual.urlAvatar;
-            const finalBanner = urlBanner.startsWith('file://') ? urlBanner : perfilActual.urlBanner;
+            let finalAvatar = urlAvatar;
+            let finalBanner = urlBanner;
+
+            if (urlAvatar && (urlAvatar.startsWith('file://') || urlAvatar.startsWith('content://'))) {
+                finalAvatar = await subirImagenAlServidor(urlAvatar, 'avatar');
+            } else if (!urlAvatar) {
+                finalAvatar = perfilActual.urlAvatar;
+            }
+
+            if (urlBanner && (urlBanner.startsWith('file://') || urlBanner.startsWith('content://'))) {
+                finalBanner = await subirImagenAlServidor(urlBanner, 'banner');
+            } else if (!urlBanner) {
+                finalBanner = perfilActual.urlBanner;
+            }
+
             await UsuarioDataService.actualizarPerfil(usuario.id, { 
                 nombrePerfil, 
                 bibliografia, 
@@ -61,29 +76,20 @@ const EditarPerfilScreen = ({ navigation, route }) => {
             });
             navigation.goBack();
         } catch (e) {
+            console.error("Error al guardar los cambios de perfil:", e);
         } finally { 
             setCargando(false); 
         }
     };
 
-    // Determina la fuente de la imagen
+    // Determina la fuente de la imagen resolviendo las URLs dinámicamente con tu helper
     const getImagenSrc = (tipo) => {
         if (tipo === 'avatar') {
             if (avatarPreview) return { uri: avatarPreview };
-            if (perfilActual.urlAvatar) return { 
-                uri: perfilActual.urlAvatar.startsWith('file://') 
-                    ? perfilActual.urlAvatar 
-                    : `http://10.0.2.2:8080/assets/img/avatar/${perfilActual.urlAvatar}` 
-            };
-            return null;
+            return obtenerImagenAvatar(perfilActual.urlAvatar);
         } else {
             if (bannerPreview) return { uri: bannerPreview };
-            if (perfilActual.urlBanner) return { 
-                uri: perfilActual.urlBanner.startsWith('file://') 
-                    ? perfilActual.urlBanner 
-                    : `http://10.0.2.2:8080/assets/img/banner/${perfilActual.urlBanner}` 
-            };
-            return null;
+            return obtenerImagenBanner(perfilActual.urlBanner);
         }
     };
 

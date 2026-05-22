@@ -1,0 +1,13 @@
+services:
+    postgres_hanechi:
+        image: postgres:15
+        container_name: postgres_hanechi
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: hanechi_notebook
+        ports:
+            - "5432:5432"
+        volumes:
+            - ./docker-data:/var/lib/postgresql/data
+        restart: always

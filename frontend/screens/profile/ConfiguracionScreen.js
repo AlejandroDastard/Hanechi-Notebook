@@ -313,7 +313,7 @@ const estilos = StyleSheet.create({
     seccionEntrada: { paddingVertical: 15 },
     etiquetaEntrada: {
         fontFamily: Tipografia.familia,
-        fontSize: Tipografia.tamano.basico, // Ajustado de .familia.basico
+        fontSize: Tipografia.tamano.basico,
         fontWeight: '700',
         color: Colores.texto.principal,
         marginBottom: 8
@@ -356,14 +356,14 @@ const estilos = StyleSheet.create({
     filaElemento: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 16 },
     textoElemento: {
         fontFamily: Tipografia.familia,
-        fontSize: Tipografia.tamano.basico, // Ajustado
+        fontSize: Tipografia.tamano.basico,
         fontWeight: '600',
         color: Colores.texto.principal
     },
     contenedorInsignia: { flexDirection: 'row', alignItems: 'center', gap: 5 },
     textoInsignia: {
         fontFamily: Tipografia.familia,
-        fontSize: Tipografia.tamano.basico, // Ajustado
+        fontSize: Tipografia.tamano.basico,
         fontWeight: '800',
         color: Colores.primario,
         backgroundColor: Colores.fondoBase,
@@ -386,7 +386,7 @@ const estilos = StyleSheet.create({
     textoSesion: { fontFamily: Tipografia.familia, fontSize: 14, fontWeight: '700', color: Colores.texto.principal },
     textoFecha: {
         fontFamily: Tipografia.familia,
-        fontSize: Tipografia.tamano.detalles, // Ajustado
+        fontSize: Tipografia.tamano.detalles,
         color: Colores.texto.secundario,
         marginTop: 2
     },
@@ -400,7 +400,7 @@ const estilos = StyleSheet.create({
     },
     textoRevocacion: {
         fontFamily: Tipografia.familia,
-        fontSize: Tipografia.tamano.basico, // Ajustado
+        fontSize: Tipografia.tamano.basico,
         fontWeight: '700',
         color: Colores.estados.error
     },
@@ -427,7 +427,7 @@ const estilos = StyleSheet.create({
     },
     textoBoton: {
         fontFamily: Tipografia.familia,
-        fontSize: Tipografia.tamano.basico, // Ajustado
+        fontSize: Tipografia.tamano.basico,
         fontWeight: '900',
         color: Colores.texto.invertido,
         letterSpacing: 0.5
